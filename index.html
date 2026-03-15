@@ -1,197 +1,557 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Smart Healthcare App</title>
-  <link rel="stylesheet" href="assets/css/main.css">
+<title>Smart Healthcare Platform</title>
+
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="manifest" href="manifest.json">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
+
 <body>
-  <!-- HAMBURGER BUTTON -->
-<div class="menu-toggle" onclick="toggleSidebar()">
-  ☰
+<!-- TOP HEADER -->
+<header class="top-header">
+
+<!-- LEFT SIDE -->
+  <div class="header-left">
+    <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+    <div class="logo">SmartHealth</div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="top-actions">
+
+    <div id="authLinks">
+      <a href="login.html" class="auth-link">Login</a>
+      <span class="divider">|</span>
+      <a href="register.html" class="auth-link">Register</a>
+    </div>
+
+  </div>
+
+    <!-- USER INFO (shown when logged in) -->
+    <div id="userInfo" class="user-info" style="display:none">
+
+      <!-- Notification Bell -->
+      <div class="notification-icon">
+        🔔
+        <div class="notification-dropdown" id="notificationDropdown">
+          <p>No new notifications</p>
+        </div>
+      </div>
+
+      <!-- Username -->
+      <span id="userName">Hi User</span>
+
+      <!-- Profile Menu -->
+      <div class="profile-menu">
+
+        <img src="assets/images/profile.png"
+        class="profile-icon"
+        onclick="toggleProfileMenu()">
+
+        <div class="profile-dropdown" id="profileDropdown">
+
+          <a href="dashboard.html">Dashboard</a>
+          <a href="#">Profile</a>
+          <a href="#" onclick="logout()">Logout</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+
+<a href="#home" class="side-link active">
+<span class="icon">🏠</span>
+<span class="label">Home</span>
+</a>
+
+<a href="#dashboard" class="side-link">
+<span class="icon">📊</span>
+<span class="label">Dashboard</span>
+</a>
+
+<a href="#booking" class="side-link">
+<span class="icon">👨‍⚕️</span>
+<span class="label">Booking</span>
+</a>
+
+<a href="#support" class="side-link">
+<span class="icon">🆘</span>
+<span class="label">Support</span>
+</a>
+
 </div>
 
-<!-- ================= SIDEBAR ================= -->
-<div class="sidebar"  id="sidebar">
-  <a href="#home" class="side-link active">🏠 Home</a>
-  <a href="#dashboard" class="side-link">📊 Dashboard</a>
-  <a href="#booking" class="side-link">👨‍⚕️ Booking</a>
-  <a href="#support" class="side-link">🆘 Support</a>
-  <a href="#login" class="side-link">🔐 Login</a>
-</div>
-
-<!-- ================= MAIN CONTENT ================= -->
+<!-- MAIN CONTENT -->
 <div class="main-content">
 
-  <!-- ================= HERO SECTION ================= -->
-  <section class="hero reveal" id="home">
-    <div>
-      <h1>AI-Powered Healthcare Platform</h1>
-      <p>Smart digital healthcare system with AI support.</p>
-      <button class="btn btn-primary">Get Started</button>
-    </div>
+<!-- HERO -->
+<section class="hero reveal" id="home">
 
-    <div class="ai-box">
-      <h3>AI Health Assistant</h3>
-      <div class="ai-messages" id="aiMessages"></div>
-      <input type="text" id="aiInput" placeholder="Ask about symptoms...">
-      <button class="btn btn-secondary" onclick="askAI()">Ask AI</button>
-    </div>
-  </section>
+<div>
+<h1>AI-Powered Healthcare Platform</h1>
 
-  <!-- ================= DASHBOARD SECTION ================= -->
-  <section class="section reveal" id="dashboard">
-    <h2>Healthcare Dashboard</h2>
-    <div class="stats-grid">
-      <div class="stat-card">Patients <p>320</p></div>
-      <div class="stat-card">Appointments <p>45</p></div>
-      <div class="stat-card">Doctors <p>25</p></div>
-      <div class="stat-card">AI Queries <p>210</p></div>
-    </div>
-  </section>
+<p>Smart digital healthcare system with AI assistance.</p>
 
-  <!-- ================= BOOK DOCTOR SECTION ================= -->
-  <section class="section reveal" id="booking">
-    <h2>Book a Doctor</h2>
+<button class="btn btn-primary" onclick="scrollToSection('booking')">
+Get Started
+</button>
 
-    <input type="text" id="searchDoctor" placeholder="Search doctor..." class="search-box">
+</div>
 
-    <div class="cards" id="doctorList">
-      <div class="card doctor">
-        <h3>Dr. A. Kumar</h3>
-        <p>Cardiologist</p>
-        <button class="btn btn-primary">Book</button>
-      </div>
+<!-- AI ASSISTANT -->
+<div class="ai-box">
 
-      <div class="card doctor">
-        <h3>Dr. S. Reddy</h3>
-        <p>Neurologist</p>
-        <button class="btn btn-primary">Book</button>
-      </div>
+<h3>AI Health Assistant</h3>
 
-      <div class="card doctor">
-        <h3>Dr. P. Sharma</h3>
-        <p>General Physician</p>
-        <button class="btn btn-primary">Book</button>
-      </div>
-    </div>
-  </section>
+<div id="aiMessages" class="ai-messages"></div>
 
-  <!-- ================= SUPPORT SECTION ================= -->
-  <section class="section reveal" id="support">
-    <h2>Patient Support</h2>
-    <div class="form-section">
-      <form id="supportForm">
-        <input type="text" placeholder="Name" required>
-        <input type="number" placeholder="Age" required>
-        <input type="text" placeholder="Symptoms" required>
-        <input type="tel" placeholder="Mobile Number" required>
-        <textarea placeholder="Message"></textarea>
-        <button class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-  </section>
+<input
+type="text"
+id="aiInput"
+placeholder="Ask about symptoms..."
+>
 
-  <!-- ================= LOGIN SECTION ================= -->
-  <section class="section reveal" id="login">
-  <h2>Login</h2>
-  <p>Access your account to manage appointments and health records.</p>
+<button class="btn btn-secondary" onclick="askAI()">
+Ask AI
+</button>
 
-  <button class="btn btn-primary" onclick="location.href='login.html'">
-    Continue to Login
-  </button>
+</div>
+
 </section>
 
 
+<!-- DASHBOARD -->
+<section class="section reveal" id="dashboard">
+
+<h2>Healthcare Dashboard</h2>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+Patients
+<p id="patientsCount">0</p>
 </div>
+
+<div class="stat-card">
+Appointments
+<p id="appointmentsCount">0</p>
+</div>
+
+<div class="stat-card">
+Doctors
+<p>25</p>
+</div>
+
+<div class="stat-card">
+AI Queries
+<p id="aiCount">0</p>
+</div>
+
+</div>
+
+<div class="analytics-grid">
+
+<div class="chart-card">
+<h3>Appointments Overview</h3>
+<canvas id="appointmentsChart"></canvas>
+</div>
+
+<div class="chart-card">
+<h3>Patients Growth</h3>
+<canvas id="patientsChart"></canvas>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BOOK DOCTOR -->
+<section class="section reveal" id="booking">
+
+<h2>Book a Doctor</h2>
+
+<input
+type="text"
+id="searchDoctor"
+placeholder="Search doctor..."
+class="search-box"
+>
+
+<div class="cards" id="doctorList">
+
+<!-- Doctor 1 -->
+
+<div class="card doctor">
+
+<img src="assets/images/doctor1.jpg" class="doctor-img">
+
+<h3>Dr. A. Kumar</h3>
+
+<span class="specialty">Cardiologist</span>
+
+<p class="rating">⭐ 4.8 Rating</p>
+
+<button class="btn btn-primary bookBtn">
+Book Appointment
+</button>
+
+</div>
+
+
+<!-- Doctor 2 -->
+
+<div class="card doctor">
+
+<img src="assets/images/doctor2.jpg" class="doctor-img">
+
+<h3>Dr. S. Reddy</h3>
+
+<span class="specialty">Neurologist</span>
+
+<p class="rating">⭐ 4.7 Rating</p>
+
+<button class="btn btn-primary bookBtn">
+Book Appointment
+</button>
+
+</div>
+
+
+<!-- Doctor 3 -->
+
+<div class="card doctor">
+
+<img src="assets/images/doctor3.jpg" class="doctor-img">
+
+<h3>Dr. P. Sharma</h3>
+
+<span class="specialty">General Physician</span>
+
+<p class="rating">⭐ 4.6 Rating</p>
+
+<button class="btn btn-primary bookBtn">
+Book Appointment
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SUPPORT -->
+<section class="section reveal" id="support">
+
+<h2>Patient Support</h2>
+
+<div class="form-section">
+
+<form id="supportForm">
+
+<input type="text" placeholder="Name" required>
+
+<input type="number" placeholder="Age" required>
+
+<input type="text" placeholder="Symptoms" required>
+
+<input type="tel" placeholder="Mobile Number" required>
+
+<textarea placeholder="Message"></textarea>
+
+<button class="btn btn-primary">Submit</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- AI SCRIPT -->
 <script src="assets/js/ai.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-document.getElementById("searchDoctor").addEventListener("keyup", function() {
-  let value = this.value.toLowerCase();
-  document.querySelectorAll(".doctor").forEach(doc => {
-    doc.style.display = doc.innerText.toLowerCase().includes(value) ? "block" : "none";
-  });
+
+/* SEARCH DOCTOR */
+
+const searchDoctor = document.getElementById("searchDoctor");
+
+if(searchDoctor){
+searchDoctor.addEventListener("keyup", function(){
+
+let value = this.value.toLowerCase();
+
+document.querySelectorAll(".doctor").forEach(doc => {
+
+doc.style.display =
+doc.innerText.toLowerCase().includes(value)
+? "block"
+: "none";
+
 });
 
-document.getElementById("supportForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  alert("Support request submitted successfully!");
 });
-</script>
+}
 
-<script>
-const navLinks = document.querySelectorAll(".navbar a[href^='#']");
+
+/* BOOK APPOINTMENT */
+
+document.querySelectorAll(".bookBtn").forEach(btn => {
+
+btn.onclick = () => {
+
+let doctor =
+btn.parentElement.querySelector("h3").innerText;
+
+let list =
+JSON.parse(localStorage.getItem("appointments") || "[]");
+
+list.push({
+doctor:doctor,
+date:new Date().toLocaleDateString()
+});
+
+localStorage.setItem("appointments",JSON.stringify(list));
+
+alert("Appointment booked with " + doctor);
+
+updateDashboard();
+
+};
+
+});
+
+
+/* SUPPORT FORM */
+
+const supportForm = document.getElementById("supportForm");
+
+if(supportForm){
+supportForm.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+alert("Support request submitted successfully!");
+
+});
+}
+
+
+/* DASHBOARD COUNTERS */
+
+function updateDashboard(){
+
+let appointments =
+JSON.parse(localStorage.getItem("appointments") || "[]");
+
+const appointmentCount =
+document.getElementById("appointmentsCount");
+
+if(appointmentCount){
+appointmentCount.innerText = appointments.length;
+}
+
+}
+
+updateDashboard();
+
+const patientsCount = document.getElementById("patientsCount");
+const aiCount = document.getElementById("aiCount");
+
+if(patientsCount) patientsCount.innerText = 320;
+if(aiCount) aiCount.innerText = 210;
+
+
+/* SIDEBAR TOGGLE */
+
+function toggleSidebar(){
+
+const sidebar = document.getElementById("sidebar");
+const main = document.querySelector(".main-content");
+
+sidebar.classList.toggle("collapsed");
+main.classList.toggle("expanded");
+
+}
+
+
+/* PROFILE MENU TOGGLE */
+
+function toggleProfileMenu(){
+
+const menu=document.getElementById("profileDropdown");
+
+menu.style.display =
+menu.style.display==="flex" ? "none" : "flex";
+
+}
+
+/* CHECK LOGIN STATUS */
+
+function checkLogin(){
+
+const loggedIn = localStorage.getItem("loggedIn");
+
+if(loggedIn){
+
+document.getElementById("authLinks").style.display="none";
+document.getElementById("userInfo").style.display="flex";
+
+let name=localStorage.getItem("userName") || "User";
+document.getElementById("userName").innerText="Hi "+name;
+
+}else{
+
+document.getElementById("authLinks").style.display="block";
+document.getElementById("userInfo").style.display="none";
+
+}
+
+}
+
+/* LOGOUT */
+
+function logout(){
+
+localStorage.removeItem("loggedIn");
+
+location.reload();
+
+}
+
+checkLogin();
+
+/* SCROLL TO SECTION */
+
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({
+behavior:"smooth"
+});
+}
+
+
+/* SCROLL ANIMATION */
+
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+
+const windowHeight = window.innerHeight;
+const revealPoint = 100;
+
+reveals.forEach(section => {
+
+const sectionTop = section.getBoundingClientRect().top;
+
+if(sectionTop < windowHeight - revealPoint){
+section.classList.add("active");
+}
+
+});
+
+}
+
+window.addEventListener("scroll", revealOnScroll);
+
+revealOnScroll();
+
+/* SIDEBAR ACTIVE SECTION ON SCROLL */
+
+const sideLinks = document.querySelectorAll(".side-link");
 const sections = document.querySelectorAll("section[id]");
 
 window.addEventListener("scroll", () => {
-  let scrollPos = window.scrollY + 120;
 
-  sections.forEach(section => {
-    if (
-      scrollPos >= section.offsetTop &&
-      scrollPos < section.offsetTop + section.offsetHeight
-    ) {
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + section.id) {
-          link.classList.add("active");
-        }
-      });
-    }
-  });
-});
-</script>
+let scrollPos = window.scrollY + 120;
 
-<script>
-const reveals = document.querySelectorAll(".reveal");
+sections.forEach(section => {
 
-function revealOnScroll() {
-  const windowHeight = window.innerHeight;
-  const revealPoint = 100;
+if(
+scrollPos >= section.offsetTop &&
+scrollPos < section.offsetTop + section.offsetHeight
+){
 
-  reveals.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
+sideLinks.forEach(link => {
 
-    if (sectionTop < windowHeight - revealPoint) {
-      section.classList.add("active");
-    }
-  });
+link.classList.remove("active");
+
+if(link.getAttribute("href") === "#" + section.id){
+link.classList.add("active");
+moveIndicator();
 }
 
-// Run on scroll
-window.addEventListener("scroll", revealOnScroll);
-
-// Run once on page load
-revealOnScroll();
-</script>
-<script>
-const sideLinks = document.querySelectorAll(".side-link");
-const sectionElements = document.querySelectorAll("section[id]");
-
-window.addEventListener("scroll", () => {
-  let scrollPos = window.scrollY + 150;
-
-  sectionElements.forEach(section => {
-    if (
-      scrollPos >= section.offsetTop &&
-      scrollPos < section.offsetTop + section.offsetHeight
-    ) {
-      sideLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + section.id) {
-          link.classList.add("active");
-        }
-      });
-    }
-  });
 });
-</script>
-<script>
-function toggleSidebar() {
-  const sidebar = document.getElementById("sidebar");
-  const main = document.querySelector(".main-content");
 
-  sidebar.classList.toggle("closed");
-  main.classList.toggle("full");
+}
+
+});
+
+});
+
+const indicator = document.getElementById("sidebarIndicator");
+
+function moveIndicator(){
+
+const activeLink = document.querySelector(".side-link.active");
+
+if(activeLink){
+
+indicator.style.top =
+activeLink.offsetTop + "px";
+
+indicator.style.height =
+activeLink.offsetHeight + "px";
+
+}
+
+}
+
+window.addEventListener("scroll", moveIndicator);
+window.addEventListener("load", moveIndicator);
+
+const ctx1 = document.getElementById("appointmentsChart");
+
+if(ctx1){
+new Chart(ctx1,{
+type:"line",
+data:{
+labels:["Mon","Tue","Wed","Thu","Fri","Sat"],
+datasets:[{
+label:"Appointments",
+data:[12,19,8,15,22,18],
+borderColor:"#0a7cff",
+fill:false
+}]
+}
+});
+}
+
+const ctx2 = document.getElementById("patientsChart");
+
+if(ctx2){
+new Chart(ctx2,{
+type:"bar",
+data:{
+labels:["Jan","Feb","Mar","Apr","May"],
+datasets:[{
+label:"New Patients",
+data:[120,190,150,220,180],
+backgroundColor:"#00bfa6"
+}]
+}
+});
 }
 </script>
 

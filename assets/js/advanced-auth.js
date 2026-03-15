@@ -14,6 +14,7 @@ function togglePassword() {
 
 // Login animation
 function login() {
+
   const email = document.getElementById("loginEmail").value;
   const password = document.getElementById("loginPassword").value;
   const loader = document.getElementById("loader");
@@ -26,10 +27,18 @@ function login() {
   loader.style.display = "block";
 
   setTimeout(() => {
+
     loader.style.display = "none";
+
+    /* SAVE LOGIN STATE */
+    localStorage.setItem("loggedIn","true");
+
     alert("Login successful!");
-    window.location.href = "dashboard.html";
-  }, 1500);
+
+    window.location.href = "index.html";
+
+  },1500);
+
 }
 
 /* PARTICLE ANIMATION (REAL APP STYLE) */

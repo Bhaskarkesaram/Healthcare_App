@@ -1,13 +1,24 @@
-function askAI() {
-  const input = document.getElementById("aiInput").value;
-  const box = document.getElementById("aiMessages");
+function askAI(){
 
-  let reply = "Consult a doctor for accurate advice.";
+const input=document.getElementById("aiInput");
+const box=document.getElementById("aiMessages");
 
-  if (input.toLowerCase().includes("fever")) reply = "You may have fever.";
-  if (input.toLowerCase().includes("cough")) reply = "Cough may be due to cold.";
-  if (input.toLowerCase().includes("headache")) reply = "Headache may be due to stress.";
+if(!input.value) return;
 
-  box.innerHTML += `<p><b>You:</b> ${input}</p>`;
-  box.innerHTML += `<p><b>AI:</b> ${reply}</p>`;
+let text=input.value.toLowerCase();
+let reply="Consult a doctor for proper diagnosis.";
+
+if(text.includes("fever"))
+reply="Possible fever. Drink fluids and monitor temperature.";
+
+else if(text.includes("cough"))
+reply="Cough may indicate cold or throat infection.";
+
+else if(text.includes("headache"))
+reply="Headache may be due to stress or dehydration.";
+
+box.innerHTML+=`<div class="chat user">You: ${input.value}</div>`;
+box.innerHTML+=`<div class="chat ai">AI: ${reply}</div>`;
+
+input.value="";
 }

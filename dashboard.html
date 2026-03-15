@@ -28,6 +28,27 @@
     <div class="stat-card">AI Queries <p id="aiCount">0</p></div>
   </div>
 
+  <div class="charts">
+  <canvas id="patientsChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('patientsChart');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Jan','Feb','Mar','Apr','May'],
+    datasets: [{
+      label: 'Patients Visits',
+      data: [120,180,150,200,230],
+      backgroundColor:'#0a7cff'
+    }]
+  }
+});
+</script>
+
   <div class="notification-box">
     <h4>Notifications</h4>
     <ul id="notifyList"></ul>
