@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SmartHealth | Login</title>
+  <link rel="stylesheet" href="assets/css/advanced-auth.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Particle Canvas -->
+<canvas id="particles"></canvas>
+
+<!-- Floating Medical Icons -->
+<div class="icons">
+  <i class="fa-solid fa-heart-pulse"></i>
+  <i class="fa-solid fa-user-doctor"></i>
+  <i class="fa-solid fa-hospital"></i>
+  <i class="fa-solid fa-syringe"></i>
+</div>
+
+<div class="auth-container">
+
+  <div class="auth-left">
+    <h1>SmartHealth</h1>
+    <p>Next-generation digital healthcare platform</p>
+    <ul>
+      <li>✔ Smart Patient Care</li>
+      <li>✔ Doctor & Admin System</li>
+      <li>✔ Secure Hospital Network</li>
+    </ul>
+  </div>
+
+  <div class="auth-right">
+
+    <h2>Login</h2>
+
+    <div class="role-group">
+      <button class="role active">Patient</button>
+      <button class="role">Doctor</button>
+      <button class="role">Admin</button>
+    </div>
+
+    <div class="input-box">
+      <i class="fa-solid fa-envelope"></i>
+      <input type="email" id="loginEmail" required>
+      <label>Email Address</label>
+    </div>
+
+  <div class="input-box">
+  <i class="fa-solid fa-lock"></i>
+
+  <input type="password" id="loginPassword" required oninput="handleEye()">
+  <label>Password</label>
+
+  <i class="fa-solid fa-eye eye" id="eyeIcon" onclick="togglePassword()"></i>
+</div>
+
+
+    <button class="login-btn" onclick="login()">Login</button>
+
+    <p class="switch-link">
+      Don’t have an account? <a href="register.html">Register</a>
+    </p>
+
+    <div class="loader" id="loader"></div>
+
+  </div>
+
+</div>
+
+<script src="assets/js/advanced-auth.js"></script>
+</body>
+</html>

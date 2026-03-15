@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6f9fc;
+  overflow: hidden;
+}
+
+/* Particle Canvas */
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Floating Medical Icons */
+.icons i {
+  position: absolute;
+  font-size: 40px;
+  color: rgba(10,124,255,0.15);
+  animation: floatIcon 12s infinite linear;
+}
+
+.icons i:nth-child(1) { top: 10%; left: 15%; animation-duration: 14s; }
+.icons i:nth-child(2) { top: 60%; left: 10%; animation-duration: 18s; }
+.icons i:nth-child(3) { top: 20%; right: 15%; animation-duration: 16s; }
+.icons i:nth-child(4) { bottom: 10%; right: 20%; animation-duration: 20s; }
+
+@keyframes floatIcon {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-80px); }
+  100% { transform: translateY(0); }
+}
+
+/* Main Container */
+.auth-container {
+  width: 1050px;
+  height: 560px;
+  display: flex;
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 0.7s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Left Panel */
+.auth-left {
+  width: 45%;
+  background: #0a7cff;
+  color: white;
+  padding: 70px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: slideLeft 0.8s ease;
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.auth-left h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.auth-left p {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+/* Right Panel */
+.auth-right {
+  width: 55%;
+  padding: 60px 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: slideRight 0.8s ease;
+}
+
+@keyframes slideRight {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.auth-right h2 {
+  font-size: 28px;
+  color: #0a7cff;
+  margin-bottom: 20px;
+}
+
+/* Role Buttons */
+.role-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.role {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 1px solid #0a7cff;
+  background: white;
+  color: #0a7cff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.role.active,
+.role:hover {
+  background: #0a7cff;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Inputs */
+.input-box {
+  position: relative;
+  margin: 14px 0;
+}
+
+.input-box i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0a7cff;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px 40px;
+  border-radius: 10px;
+  border: 1px solid #dce3ea;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-box input:focus {
+  border-color: #0a7cff;
+  box-shadow: 0 0 12px rgba(10,124,255,0.25);
+}
+
+.input-box label {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  color: #888;
+  transition: 0.3s;
+}
+
+.input-box input:focus + label,
+.input-box input:valid + label {
+  top: -8px;
+  font-size: 11px;
+  color: #0a7cff;
+}
+
+/* Eye icon hidden initially */
+.eye {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #0a7cff;
+  font-size: 15px;
+  display: none; /* 🔒 hidden by default */
+}
+
+/* Optional hover effect */
+.eye:hover {
+  opacity: 0.8;
+}
+
+
+/* Button */
+.login-btn {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  background: #0a7cff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(10,124,255,0.35);
+}
+
+/* Loader */
+.loader {
+  display: none;
+  width: 28px;
+  height: 28px;
+  border: 3px solid #dce3ea;
+  border-top: 3px solid #0a7cff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-top: 12px;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .auth-container {
+    width: 95%;
+    height: auto;
+    flex-direction: column;
+  }
+  .auth-left,
+  .auth-right {
+    width: 100%;
+  }
+}

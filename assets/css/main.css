@@ -1,0 +1,264 @@
+:root {
+  --primary: #0a7cff;
+  --secondary: #00bfa6;
+  --dark: #1e293b;
+  --light: #ffffff;
+  --shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: linear-gradient(120deg, #e0f7fa, #ffffff);
+  color: var(--dark);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  padding: 10px 22px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: white;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, #0a7cff, #00bfa6);
+  color: white;
+  padding: 60px;
+  margin: 20px;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ===== CARDS ===== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+/* ===== COMMON SECTION ===== */
+.section {
+  padding: 60px 80px;
+  margin-top: 20px;
+}
+
+.section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+/* ===== DASHBOARD ===== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  background: linear-gradient(135deg, #0a7cff, #00bfa6);
+  color: white;
+}
+
+/* ===== DOCTOR SEARCH ===== */
+.search-box {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* ===== FORMS ===== */
+.form-section {
+  width: 420px;
+  margin: 40px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+input, textarea {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+}
+
+/* Support Form */
+.form-section label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.form-section button {
+  margin-top: 20px;
+}
+
+/* ===== AUTH (if used later) ===== */
+.auth-section {
+  background: #f0f7ff;
+}
+
+.auth-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.auth-box {
+  background: white;
+  padding: 30px;
+  width: 320px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+}
+
+.auth-box:hover {
+  transform: scale(1.03);
+}
+
+.auth-box input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* ===== SMOOTH SCROLL ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== SIDEBAR (ONLY NAVIGATION NOW) ===== */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 100vh;
+  background: #0a7cff;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1001;
+}
+
+.side-link {
+  color: white;
+  text-decoration: none;
+  padding: 15px 25px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.side-link:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.side-link.active {
+  background: white;
+  color: #0a7cff;
+  font-weight: bold;
+}
+
+/* Push main content right */
+.main-content {
+  margin-left: 220px;
+}
+
+/* ===== NOTIFICATION ===== */
+.notification-box {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 260px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+/* ===== HAMBURGER BUTTON ===== */
+.menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 26px;
+  background: #0a7cff;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* ===== SIDEBAR HIDDEN STATE ===== */
+.sidebar {
+  transition: transform 0.3s ease;
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+/* ===== MAIN CONTENT ADJUST ===== */
+.main-content {
+  transition: margin-left 0.3s ease;
+}
+
+.main-content.full {
+  margin-left: 0;
+}
+

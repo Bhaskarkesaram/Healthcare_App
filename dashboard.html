@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="logo">SmartHealth</div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="booking.html">Book Doctor</a>
+    <a href="support.html">Support</a>
+    <a href="admin.html">Admin</a>
+  </div>
+</div>
+
+<div class="dashboard-container">
+  <h2>Healthcare Dashboard</h2>
+
+  <div class="stats-grid">
+    <div class="stat-card">Patients <p id="patientsCount">0</p></div>
+    <div class="stat-card">Appointments <p id="appointmentsCount">0</p></div>
+    <div class="stat-card">Volunteers <p id="volunteersCount">0</p></div>
+    <div class="stat-card">AI Queries <p id="aiCount">0</p></div>
+  </div>
+
+  <div class="notification-box">
+    <h4>Notifications</h4>
+    <ul id="notifyList"></ul>
+  </div>
+</div>
+
+<script src="assets/js/dashboard.js"></script>
+<script src="assets/js/notify.js"></script>
+</body>
+</html>
+

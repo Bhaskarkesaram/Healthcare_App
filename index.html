@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Healthcare App</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <!-- HAMBURGER BUTTON -->
+<div class="menu-toggle" onclick="toggleSidebar()">
+  ☰
+</div>
+
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar"  id="sidebar">
+  <a href="#home" class="side-link active">🏠 Home</a>
+  <a href="#dashboard" class="side-link">📊 Dashboard</a>
+  <a href="#booking" class="side-link">👨‍⚕️ Booking</a>
+  <a href="#support" class="side-link">🆘 Support</a>
+  <a href="#login" class="side-link">🔐 Login</a>
+</div>
+
+<!-- ================= MAIN CONTENT ================= -->
+<div class="main-content">
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero reveal" id="home">
+    <div>
+      <h1>AI-Powered Healthcare Platform</h1>
+      <p>Smart digital healthcare system with AI support.</p>
+      <button class="btn btn-primary">Get Started</button>
+    </div>
+
+    <div class="ai-box">
+      <h3>AI Health Assistant</h3>
+      <div class="ai-messages" id="aiMessages"></div>
+      <input type="text" id="aiInput" placeholder="Ask about symptoms...">
+      <button class="btn btn-secondary" onclick="askAI()">Ask AI</button>
+    </div>
+  </section>
+
+  <!-- ================= DASHBOARD SECTION ================= -->
+  <section class="section reveal" id="dashboard">
+    <h2>Healthcare Dashboard</h2>
+    <div class="stats-grid">
+      <div class="stat-card">Patients <p>320</p></div>
+      <div class="stat-card">Appointments <p>45</p></div>
+      <div class="stat-card">Doctors <p>25</p></div>
+      <div class="stat-card">AI Queries <p>210</p></div>
+    </div>
+  </section>
+
+  <!-- ================= BOOK DOCTOR SECTION ================= -->
+  <section class="section reveal" id="booking">
+    <h2>Book a Doctor</h2>
+
+    <input type="text" id="searchDoctor" placeholder="Search doctor..." class="search-box">
+
+    <div class="cards" id="doctorList">
+      <div class="card doctor">
+        <h3>Dr. A. Kumar</h3>
+        <p>Cardiologist</p>
+        <button class="btn btn-primary">Book</button>
+      </div>
+
+      <div class="card doctor">
+        <h3>Dr. S. Reddy</h3>
+        <p>Neurologist</p>
+        <button class="btn btn-primary">Book</button>
+      </div>
+
+      <div class="card doctor">
+        <h3>Dr. P. Sharma</h3>
+        <p>General Physician</p>
+        <button class="btn btn-primary">Book</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SUPPORT SECTION ================= -->
+  <section class="section reveal" id="support">
+    <h2>Patient Support</h2>
+    <div class="form-section">
+      <form id="supportForm">
+        <input type="text" placeholder="Name" required>
+        <input type="number" placeholder="Age" required>
+        <input type="text" placeholder="Symptoms" required>
+        <input type="tel" placeholder="Mobile Number" required>
+        <textarea placeholder="Message"></textarea>
+        <button class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= LOGIN SECTION ================= -->
+  <section class="section reveal" id="login">
+  <h2>Login</h2>
+  <p>Access your account to manage appointments and health records.</p>
+
+  <button class="btn btn-primary" onclick="location.href='login.html'">
+    Continue to Login
+  </button>
+</section>
+
+
+</div>
+<script src="assets/js/ai.js"></script>
+<script>
+document.getElementById("searchDoctor").addEventListener("keyup", function() {
+  let value = this.value.toLowerCase();
+  document.querySelectorAll(".doctor").forEach(doc => {
+    doc.style.display = doc.innerText.toLowerCase().includes(value) ? "block" : "none";
+  });
+});
+
+document.getElementById("supportForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  alert("Support request submitted successfully!");
+});
+</script>
+
+<script>
+const navLinks = document.querySelectorAll(".navbar a[href^='#']");
+const sections = document.querySelectorAll("section[id]");
+
+window.addEventListener("scroll", () => {
+  let scrollPos = window.scrollY + 120;
+
+  sections.forEach(section => {
+    if (
+      scrollPos >= section.offsetTop &&
+      scrollPos < section.offsetTop + section.offsetHeight
+    ) {
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + section.id) {
+          link.classList.add("active");
+        }
+      });
+    }
+  });
+});
+</script>
+
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+  const windowHeight = window.innerHeight;
+  const revealPoint = 100;
+
+  reveals.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+
+    if (sectionTop < windowHeight - revealPoint) {
+      section.classList.add("active");
+    }
+  });
+}
+
+// Run on scroll
+window.addEventListener("scroll", revealOnScroll);
+
+// Run once on page load
+revealOnScroll();
+</script>
+<script>
+const sideLinks = document.querySelectorAll(".side-link");
+const sectionElements = document.querySelectorAll("section[id]");
+
+window.addEventListener("scroll", () => {
+  let scrollPos = window.scrollY + 150;
+
+  sectionElements.forEach(section => {
+    if (
+      scrollPos >= section.offsetTop &&
+      scrollPos < section.offsetTop + section.offsetHeight
+    ) {
+      sideLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + section.id) {
+          link.classList.add("active");
+        }
+      });
+    }
+  });
+});
+</script>
+<script>
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  const main = document.querySelector(".main-content");
+
+  sidebar.classList.toggle("closed");
+  main.classList.toggle("full");
+}
+</script>
+
+</body>
+</html>
