@@ -31,5 +31,4 @@ This project provides a digital platform for patient support, doctor booking, ad
 
 ---
 
-## 🗂 Project Structure
 
