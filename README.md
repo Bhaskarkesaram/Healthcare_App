@@ -1,34 +1,103 @@
-# 🏥 Smart Healthcare Frontend Application
+# 🏥 Smart Healthcare Platform
 
-A modern, responsive, AI-inspired healthcare support web application built using **HTML, CSS, and JavaScript**.  
-This project provides a digital platform for patient support, doctor booking, admin management, and healthcare analytics.
+An **AI-powered healthcare web application** that allows patients to interact with an AI assistant, view healthcare statistics, and book doctor appointments through a modern dashboard interface.
 
----
-
-## 📌 Features
-
-### 👤 User Features
-- AI Health Assistant (Frontend Simulation)
-- Patient Support Form
-- Doctor Search & Booking System
-- Responsive UI (Mobile + Desktop)
-- Real-time Notifications UI
-- Modern Hospital-Themed Design
-
-### 📊 Dashboard Features
-- Healthcare Analytics Dashboard
-- Animated Statistics Counters
-- Notification System
-- Clean UI Cards & Layout
-
-### 🛠 Admin Features
-- Admin Panel Interface
-- Patient & Appointment Overview
-- Data Table UI
-
-### 📱 PWA Support
-- Installable as a Mobile App using `manifest.json`
+This project demonstrates **modern frontend development, dashboard UI design, and healthcare management concepts**.
 
 ---
 
+# 🚀 Live Demo
 
+🔗 https://Bhaskarkesaram.github.io/Mini-Healthcare-Support-App/
+
+---
+
+# ✨ Features
+```
+✔ AI Health Assistant
+✔ Doctor Appointment Booking
+✔ Healthcare Dashboard Statistics
+✔ Smart Sidebar Navigation
+✔ Collapsible Sidebar Menu
+✔ Notification System
+✔ User Login / Register UI
+✔ Profile Menu
+✔ Responsive Dashboard Layout
+```
+---
+
+# 🧠 Technologies Used
+
+* HTML5
+* CSS3
+* JavaScript
+* LocalStorage API
+* Responsive Dashboard Design
+
+---
+
+# 📂 Project Structure
+
+```
+Mini-Healthcare-Support-App
+│
+├── index.html
+├── login.html
+├── register.html
+│
+├── assets
+│   ├── css
+│   │   └── main.css
+│   │
+│   ├── js
+│   │   ├── ai.js
+│   │   ├── notify.js
+│   │   └── dashboard.js
+│   │
+│   └── images
+│
+└── README.md
+```
+
+---
+
+# ⚙️ Installation
+
+Clone the repository:
+
+```
+git clone https://github.com/Bhaskarkesaram/Mini-Healthcare-Support-App.git
+```
+
+Open the project folder:
+
+```
+cd Mini-Healthcare-Support-App
+```
+
+Run the project by opening:
+
+```
+index.html
+```
+
+---
+
+# 📈 Future Improvements
+
+* Doctor Appointment Calendar
+* Backend API integration
+* Real database storage
+* Patient medical record management
+* Admin dashboard
+* Real AI medical assistant integration
+
+---
+
+# 👨‍💻 Author
+
+Bhaskar Kesaram
+
+Computer Science Student | Web Developer
+
+GitHub: https://github.com/Bhaskarkesaram
